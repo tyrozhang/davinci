@@ -1,0 +1,13 @@
+使用maven3.0.5版本
+
+下载证书 https://blog.csdn.net/seafishyls/article/details/56846225
+
+
+keytool -import -trustcacerts -alias ali -file ./ali.cer -keystore D:/Java/jdk1.8.0_91/jre/lib/security/cacerts -storepass changeit
+
+keytool -import -trustcacerts -alias maven -file ./maven.cer -keystore D:/Java/jdk1.8.0_91/jre/lib/security/cacerts -storepass changeit
+
+mvn -X compile -Dmaven.test.skip=true  -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true
+
+
+java -Dfile.encoding=UTF-8 -cp .;%JAVA_HOME%\lib\*;.\lib\*;   davinci-server_3.01-0.3.0-SNAPSHOT.jar edp.DavinciServerApplication --spring.config.additional-location=file:.\config\application.yml
